@@ -52,7 +52,7 @@ router.post("/", async function (req, res, next) {
 router.put("/:isbn", async function (req, res, next) {
   try {
     const isValid = jsonSchema.validate(req.body, updateBookSchema)
-    console.log(req.body)
+
     if (!isValid.valid) {
       let errorList = isValid.errors.map(er => er.stack)
       throw new ExpressError(errorList, 404)
